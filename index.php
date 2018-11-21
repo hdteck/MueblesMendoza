@@ -1,29 +1,35 @@
 <?php
-$servername = "mendozabdsrv1.database.windows.net";
-
-
-$connectionOptions = array(
-    "Database" => "AdventureWorksLT",
-    "Uid" => "proadmin",
-    "PWD" => "M3nd0za!Db"
-);
-//Establishes the connection
-$conn = sqlsrv_connect($serverName, $connectionOptions);
-$tsql= "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
-        FROM [SalesLT].[ProductCategory] pc
-        JOIN [SalesLT].[Product] p
-     ON pc.productcategoryid = p.productcategoryid";
-$getResults= sqlsrv_query($conn, $tsql);
-echo ("Reading data from table" . PHP_EOL);
-if ($getResults == FALSE)
-    echo (sqlsrv_errors());
-echo "CategoryName                 Product";
-while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-   
- echo (. $row['CategoryName'] . "  " . $row['ProductName'] ."<br>" . PHP_EOL);
+if(isset($_POST["enviar"]))
+{
+    $clave = $_POST["clave"];
+    echo "Seguridad de la clave: " . verificar_seguridad_clave($clave);
 }
-
-
-sqlsrv_free_stmt($getResults);
-?>
  
+/**
+ * Funcion que devuelve la seguridad de una constraseña en %
+ */
+function verificar_seguridad_clave($string){
+    $h    = 0;
+    $size = strlen($string);
+ 
+    # obtenemos la cantidad de caracteres repetidos en la cadena
+    foreach(count_chars($string, 1) as $v){
+        $p = $v / $size;
+        $h -= $p * log($p) / log(2);
+    }
+    $strength = ($h / 4) * 100;
+    if($strength > 100){
+        $strength = 100;
+    }
+    return $strength;
+}
+?>
+<html>
+<body>
+<form action="" method="POST">
+    <p>Clave:</p>
+    <p><input type="password" name="clave"></p>
+    <p><input type="submit" name="enviar" value="Verificar"></p>
+</form>
+</body>
+</html>
