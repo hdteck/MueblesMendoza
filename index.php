@@ -20,7 +20,7 @@ if ($getResults == FALSE)
 echo "CategoryName                 Product";
 while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
    
- echo (. $row['CategoryName'] . "==>" . $row['ProductName'] ."<br>" . PHP_EOL);
+ echo (. $row['CategoryName'] . "  " . $row['ProductName'] ."<br>" . PHP_EOL);
 }
 
 
