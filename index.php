@@ -20,9 +20,9 @@ if ($getResults == FALSE)
 echo "<table><tr><th>Category</th><th>Name</th><th>";
 while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
     echo "<tr>";
- echo ("<td>". $row['CategoryName'] . "</td>"."<td>" . $row['ProductName'] ."</td>" . PHP_EOL);
+ echo ("<td>". $row['CategoryName'] . "</td>". "<td>" . $row['ProductName'] ."</td>" . PHP_EOL);
 }
-echo "<tr>";
+echo "</tr>";
 echo "</table>";
 sqlsrv_free_stmt($getResults);
 ?>
