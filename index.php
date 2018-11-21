@@ -19,11 +19,11 @@ if ($getResults == FALSE)
     echo (sqlsrv_errors());
 echo "<table><tr><th>Category</th><th>Name</th></tr>";
 while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-    echo "<tr>";
- echo ("<td>". $row['CategoryName'] . "</td>". "<td>" . $row['ProductName'] ."</td>" . PHP_EOL);
+   
+ echo ("<tr><th>". $row['CategoryName'] . "</tr></th>". "<tr><th>" . $row['ProductName'] ."</tr></th>" . PHP_EOL);
 }
 
-echo "</table>";
+
 sqlsrv_free_stmt($getResults);
 ?>
  
