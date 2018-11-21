@@ -17,7 +17,7 @@ $getResults= sqlsrv_query($conn, $tsql);
 echo ("Reading data from table" . PHP_EOL);
 if ($getResults == FALSE)
     echo (sqlsrv_errors());
-echo "<tr><th>Category</th><th>Name</th></tr>";
+echo "CategoryName                 Product";
 while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
    
  echo (. $row['CategoryName'] . "==>" . $row['ProductName'] ."<br>" . PHP_EOL);
