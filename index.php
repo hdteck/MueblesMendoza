@@ -9,7 +9,7 @@
     <script>
      $(document).ready(function(){
          
-          $.get("bd/com.json",function(data){
+          $.get("com.json",function(data){
                  
                 for(var i = data.length-1;i >= 0;i--){
                  
