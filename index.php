@@ -9,7 +9,9 @@
     $conn = sqlsrv_connect($serverName, $connectionOptions);
     if ($conn === true) {  
                 echo "Connection was established";  
-    }            
+    }else{
+               echo "Error de conexion"   
+    }    
     $tsql= "SELECT * FROM dbo.pedidos";
     $getResults= sqlsrv_query($conn, $tsql);
     echo ("Reading data from table" . PHP_EOL);
