@@ -1,12 +1,18 @@
 <?php
-    $serverName = "sqllab001.database.windows.net"; // update me
-    $connectionOptions = array(
-        "Database" => "pedidos_curso", // update me
-        "Uid" => "usr_pedidos", // update me
-        "PWD" => "" // update me
-    );
-    //Establishes the connection
-    $conn = sqlsrv_connect($serverName, $connectionOptions);
+    // PHP Data Objects(PDO) Sample Code:
+try {
+    $conn = new PDO("sqlsrv:server = tcp:sqllab001.database.windows.net,1433; Database = pedidos_curso", "usr_pedidos", "{your_password_here}");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (PDOException $e) {
+    print("Error connecting to SQL Server.");
+    die(print_r($e));
+}
+
+// SQL Server Extension Sample Code:
+$connectionInfo = array("UID" => "usr_pedidos", "pwd" => "1Ma5p11Ma5p1", "Database" => "pedidos_curso", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+$serverName = "tcp:sqllab001.database.windows.net,1433";
+$conn = sqlsrv_connect($serverName, $connectionInfo);
     if ($conn === true) {  
                 echo "Connection was established";  
     }else{
