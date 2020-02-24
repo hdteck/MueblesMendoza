@@ -16,7 +16,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
  
     $tsql= "SELECT * FROM dbo.pedidos";
     $getResults= sqlsrv_query($conn, $tsql);
-    echo ("Reading data from table" . PHP_EOL);
+    echo ("<hr1>"."Items en stock" . PHP_EOL ."<hr1>");
     if ($getResults == FALSE)
         echo (sqlsrv_errors());
     while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
