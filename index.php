@@ -20,8 +20,8 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     if ($getResults == FALSE)
         echo (sqlsrv_errors());
     while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-     echo ($row['ID'] . " " . $row['nombre'] . PHP_EOL);
-        echo (<hr>);
+     echo ($row['ID'] . " " . $row['nombre'] . PHP_EOL ."<br />");
+        
     }
     sqlsrv_free_stmt($getResults);
 ?>
