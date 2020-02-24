@@ -16,11 +16,11 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
  
     $tsql= "SELECT * FROM dbo.pedidos";
     $getResults= sqlsrv_query($conn, $tsql);
-    echo ("<hr1>"."Items en stock" . PHP_EOL ."<hr1>");
+    echo ("<h1>"."Items en stock" . PHP_EOL ."<h1>");
     if ($getResults == FALSE)
         echo (sqlsrv_errors());
     while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-     echo ($row['ID'] . " " . $row['nombre'] . PHP_EOL ."<br />");
+     echo ($row['ID'] . " Nombre:" . $row['nombre'] . PHP_EOL ."<br />");
         
     }
     sqlsrv_free_stmt($getResults);
